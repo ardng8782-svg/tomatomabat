@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>🍅 시간관리하고 토마토키우기 (힐링 텃밭 에디션)</title>
-    <!-- 싱그러운 디자인을 위한 최신 Tailwind CSS 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <!-- 아기자기하고 귀여운 나눔스퀘어 라운드 글씨체 웹폰트 로드 -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonjak/NanumSquareRound@1.0/nanumsquareround.css">
     
     <style>
@@ -45,10 +43,8 @@
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <!-- 왼쪽 & 가운데: 메인 텃밭 관리 영역 -->
         <div class="lg:col-span-2 space-y-6">
             
-            <!-- 상단 바 -->
             <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-emerald-600/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative overflow-hidden">
                 <div class="absolute right-0 top-0 text-6xl opacity-5 pointer-events-none select-none">🏡</div>
                 <div>
@@ -60,7 +56,6 @@
                 </div>
             </div>
 
-            <!-- 달력 컴포넌트 -->
             <div class="bg-white p-4 rounded-3xl border-2 border-emerald-600/20 shadow-xs space-y-3">
                 <div class="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 bg-emerald-50/60 p-2.5 rounded-2xl border border-emerald-100">
                     <div onclick="toggleCalendarSection()" class="flex items-center gap-2.5 cursor-pointer select-none group flex-1">
@@ -89,7 +84,6 @@
                 </div>
             </div>
 
-            <!-- 토마토 타이머 화면 -->
             <div id="timer-section" class="hidden bg-emerald-900 text-white p-6 rounded-3xl shadow-md text-center border-4 border-emerald-950 relative overflow-hidden flex flex-col items-center justify-center">
                 <div class="absolute -right-6 -bottom-6 text-9xl opacity-10">☀️</div>
                 <p class="text-emerald-300 text-xs font-extrabold tracking-widest mb-1">🌳 WATERING & GROWING</p>
@@ -110,9 +104,7 @@
                 </button>
             </div>
 
-            <!-- 할 일 목록 보드 섹션 -->
             <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-emerald-600/20 space-y-6">
-                <!-- [⭐ 수정 완료] 흙 갈아엎기 테마 박스: 이모티콘을 가독성이 훨씬 뛰어난 새싹 수확 도구 패키지로 교체 -->
                 <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-900/10">
                     <h3 class="text-sm font-black text-amber-900 flex items-center gap-1.5">
                         <span>🌱</span> 오늘 심을 토마토 씨앗과 재배 시간 등록
@@ -150,14 +142,12 @@
                 </div>
             </div>
 
-            <!-- 미니 푸터 -->
             <div class="text-center text-[11px] font-bold text-emerald-800/40 py-1">
                 🍀 정성 가득 몰입 농장 창고지기 일지 시스템
             </div>
 
         </div>
 
-        <!-- 오른쪽: 격자 텃밭 -->
         <div class="bg-white p-6 rounded-3xl border-2 border-emerald-600/20 h-[calc(100vh-4rem)] lg:sticky lg:top-8 flex flex-col space-y-4">
           <div class="grid grid-cols-2 gap-2 bg-stone-50 p-2.5 rounded-2xl border border-stone-100">
               <div class="bg-white px-3 py-2.5 rounded-xl border border-red-100 shadow-3xs flex items-center justify-between">
@@ -186,7 +176,6 @@
 
     </div>
 
-    <!-- 우하단 미니 애니메이션 플로팅 피드백 단추 -->
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScqSCAlZRQo4ezzswwTyy4di_dz6stEt2tE0e4HVA3ekBwWwg/viewform" 
        target="_blank" 
        title="농장 주인에게 의견 보내기"
@@ -197,7 +186,6 @@
 
     <video id="pip-video" muted autoplay playsinline style="display:none;"></video>
 
-    <!-- 모달 창들 -->
     <div id="end-modal" class="hidden fixed inset-0 bg-stone-950/60 backdrop-blur-xs flex items-center justify-center p-4 z-50">
         <div class="bg-white p-6 rounded-3xl max-w-sm w-full shadow-2xl border-2 border-red-100 text-center space-y-4">
             <div>
@@ -291,7 +279,7 @@
             const firstDayIndex = new Date(calendarViewerYear, calendarViewerMonth, 1).getDay(); const totalDays = new Date(calendarViewerYear, calendarViewerMonth + 1, 0).getDate();
             for (let i = 0; i < firstDayIndex; i++) { const emptyCell = document.createElement('div'); emptyCell.className = "h-11 bg-transparent"; gridContainer.appendChild(emptyCell); }
             for (let day = 1; day <= totalDays; day++) {
-                const dayString = `${calendarViewerYear}-${String(calendarViewerMonth + 1).padStart(2, '0')}–${String(day).padStart(2, '0')}`; const hasBlocks = db.blocks[dayString] && Object.values(db.blocks[dayString]).includes("tomato"); const hasTodos = db.todos[dayString] && db.todos[dayString].length > 0; const isMarkedDay = hasBlocks || hasTodos; const isSelected = dayString === currentSelectedDate;
+                const dayString = `${calendarViewerYear}-${String(calendarViewerMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`; const hasBlocks = db.blocks[dayString] && Object.values(db.blocks[dayString]).includes("tomato"); const hasTodos = db.todos[dayString] && db.todos[dayString].length > 0; const isMarkedDay = hasBlocks || hasTodos; const isSelected = dayString === currentSelectedDate;
                 const dayButton = document.createElement('button'); dayButton.setAttribute('onclick', `changeDate('${dayString}')`);
                 let cellClass = "h-11 rounded-xl flex flex-col items-center justify-between p-1 text-[11px] font-bold border transition-all cursor-pointer ";
                 if (isSelected) { cellClass += "bg-emerald-700 text-white border-emerald-800 shadow-3xs scale-102 font-extrabold"; } else { cellClass += "bg-white text-stone-700 border-stone-200/70 hover:bg-emerald-50 hover:border-emerald-200"; } dayButton.className = cellClass;
@@ -395,5 +383,7 @@
 
         renderTodos(); createTimeline(); updateGridCalendar(); calculateCounters();
     </script>
+
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
